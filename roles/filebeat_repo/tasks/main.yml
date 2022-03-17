@@ -1,0 +1,18 @@
+- name: Adding logstash repo to OracleLinux hosts
+   ansible.builtin.yum_repository:
+     name: logstash_repo
+     description: Repository for logstash 8.x
+     file: repo_logstash_8x
+     baseurl: https://artifacts.elastic.co/packages/8.x/yum
+     gpgcheck: yes
+     gpgkey: https://artifacts.elastic.co/GPG-KEY-elasticsearch
+     when: ansible_distribution == "OracleLinux"
+
+- name: Adding logstash repo 
+    ansible.builtin.apt_repository:
+      name: logstash_repo
+      description: Repository for logstash 8.x
+      gpgkey: https://artifacts.elastic.co/GPG-KEY-elasticsearch
+      repo: deb https://artifacts.elastic.co/packages/8.x/apt stable main
+      state: present
+      when: ansible_distribution == "Ubuntu"

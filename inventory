@@ -1,0 +1,5 @@
+[ansible_manager]
+localhost ansible_connection=local
+
+[elk]
+192.168.56.115
